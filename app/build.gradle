@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'ucne.edu.apiarticulosap2'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "ucne.edu.apiarticulosap2"
         minSdk 24
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -82,4 +82,9 @@ dependencies {
 
     //viewmodel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
 }

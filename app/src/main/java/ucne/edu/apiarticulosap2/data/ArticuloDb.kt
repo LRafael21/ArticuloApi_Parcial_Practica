@@ -7,7 +7,7 @@ import ucne.edu.apiarticulosap2.data.entity.Articulo
 
 @Database(
     entities = [Articulo::class] ,
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class ArticuloDb: RoomDatabase(){

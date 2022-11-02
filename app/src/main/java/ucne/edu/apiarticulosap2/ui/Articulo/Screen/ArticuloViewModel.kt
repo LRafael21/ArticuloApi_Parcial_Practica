@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ucne.edu.apiarticulosap2.data.entity.Articulo
+import ucne.edu.apiarticulosap2.data.remote.dto.ArticulosDTO
 import ucne.edu.apiarticulosap2.repository.ArticuloRepository
 import javax.inject.Inject
 
@@ -26,23 +27,18 @@ class ArticuloViewModel @Inject constructor(
         private set
 
 
-    fun Guardar() {
+
+    fun Guardar(articulo: ArticulosDTO){
         viewModelScope.launch {
-            repository.insert(
-                Articulo(
-                    articuloId = uiState.id,
-                    descripcion = uiState.descripcion,
-                    marca = uiState.marca,
-                    existencia = uiState.existencia.toDouble()
-                )
-            )
+            repository.createArticulo(articulo)
         }
     }
+
     fun findById(id:Int) {
         viewModelScope.launch {
             repository.getArticuloById(id)?.let {
                 uiState = uiState.copy(
-                    id = it.articuloId,
+                   id = it.articuloId,
                     descripcion =  it.descripcion,
                     marca = it.marca,
                     existencia = it.existencia.toString()
